@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "6eb215a9-a4f9-41d2-ae55-a2f19e518084",
+		"name": "Gestor Interfer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37413643"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@gmail.com\",\r\n    \"password\":\"SumoAdmin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Empresas",
+			"item": [
+				{
+					"name": "ListarEmpresa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/listarEmpresas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"listarEmpresas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarEmpresaAZ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/listarEmpresasAZ",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"listarEmpresasAZ"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarEmpresaZA",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/listarEmpresasZA",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"listarEmpresasZA"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarEmpresaAño",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/listarEmpresas1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"listarEmpresas1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarEmpresaCategoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/listarEmpresasC",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"listarEmpresasC"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarEmpresaExcel",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "AgregarEmpresa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNmU1MjZhZThmZGQxMWRmOGJmZmMiLCJpYXQiOjE3NDA2MDU5NTQsImV4cCI6MTc0MDYwOTU1NH0.GjDSyn8jU9I1r-RUYYHlaXmbvg1BvLrBn-Q2NXk75qc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"oracle\",\r\n    \"categoria\": \"Programacion\",\r\n    \"impacto\": \"Mas de 63 anios dedicados a la enseniasa\",\r\n    \"trayectoria\":24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/guardarEmpresa",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"guardarEmpresa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ActualizarEmpresa",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2N2JmNmU1MjZhZThmZGQxMWRmOGJmZmMiLCJpYXQiOjE3NDA2MDU5NTQsImV4cCI6MTc0MDYwOTU1NH0.GjDSyn8jU9I1r-RUYYHlaXmbvg1BvLrBn-Q2NXk75qc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Kinal\",\r\n    \"categoria\": \"Educacion\",\r\n    \"impacto\": \"Mas de 63 anios dedicados a la enseniasa\",\r\n    \"trayectoria\":63\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/gestorInterfer/empresas/actualizarEmpresa/67bf7f6470174541921c909f?=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"gestorInterfer",
+								"empresas",
+								"actualizarEmpresa",
+								"67bf7f6470174541921c909f"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

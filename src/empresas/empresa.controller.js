@@ -1,4 +1,8 @@
 import Empresa from "./empresa.model.js";
+import { fileURLToPath } from 'url';
+import XLSX from 'xlsx';
+import fs from 'fs';
+import path from 'path';
 
 export const saveEmpresa = async (req, res) => {
     try {
@@ -148,6 +152,62 @@ export const updateEmpresa = async (req, res) => {
         res.status(500).json({
             success: false,
             msg: "Error al actualizar la empresa",
+            error
+        });
+    }
+};
+
+export const getEmpresasXLSX = async (req, res) => {
+    try {
+        const __filename = fileURLToPath(import.meta.url);
+        const __dirname = path.dirname(__filename);
+        const empresas = await Empresa.find();
+ 
+        if (empresas.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: "No hay empresas para generar el archivo Excel."
+            });
+        }
+    
+        const wb = XLSX.utils.book_new();
+
+        const empresasData = empresas.map(empresa => ({
+            Nombre: empresa.name,  
+            Categoria: empresa.categoria,
+            Impacto: empresa.impacto,
+            Trayectoria: empresa.trayectoria,
+            Status: empresa.status ? "Activo" : "Inactivo"  
+        }));
+
+        const ws = XLSX.utils.json_to_sheet(empresasData);
+
+        XLSX.utils.book_append_sheet(wb, ws, "Empresas");
+
+        const fileBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'buffer' });
+
+        const folderPath = path.join(path.dirname(path.dirname(__dirname)), 'ReportesExcel');
+
+        if (!fs.existsSync(folderPath)) {
+            fs.mkdirSync(folderPath, { recursive: true });
+        }
+        const filePath = path.join(folderPath, 'empresas.xlsx');
+        console.log('Ruta del archivo:', filePath);
+
+        
+
+        fs.writeFileSync(filePath, fileBuffer);
+
+        res.status(200).json({
+            success: true,
+            message: "Archivo Excel generado y guardado con éxito.",
+            filePath 
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: "Error al generar el archivo Excel",
             error
         });
     }
