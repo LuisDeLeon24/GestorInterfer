@@ -7,6 +7,7 @@ import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import { hash } from "argon2";
 import authRoutes from '../src/auth/auth.routes.js'
+import empresaRoutes from '../src/empresas/empresa.routes.js'
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import Usuario from "../src/user/user.model.js";
 import Role from "../src/role/role.model.js";
@@ -21,6 +22,7 @@ const configurarMiddlewares = (app) => {
 }
 const configurarRutas = (app) =>{   
     app.use("/gestorInterfer/auth", authRoutes);
+    app.use("/gestorInterfer/empresas", empresaRoutes);
 }
 
 const initializeRoles = async () => {
