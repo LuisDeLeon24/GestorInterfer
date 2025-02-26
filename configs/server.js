@@ -6,6 +6,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import { dbConnection } from './mongo.js';
 import { hash } from "argon2";
+import authRoutes from '../src/auth/auth.routes.js'
 import limiter from '../src/middlewares/validar-cant-peticiones.js'
 import Usuario from "../src/user/user.model.js";
 import Role from "../src/role/role.model.js";
@@ -18,9 +19,8 @@ const configurarMiddlewares = (app) => {
     app.use(morgan('dev'));
     app.use(limiter);
 }
-const configurarRutas = (app) =>{
-
-
+const configurarRutas = (app) =>{   
+    app.use("/gestorInterfer/auth", authRoutes);
 }
 
 const initializeRoles = async () => {
